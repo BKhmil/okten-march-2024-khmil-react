@@ -1,0 +1,12 @@
+.wrapper {
+    border: 3px solid red;
+    background-color: coral;
+    padding: 3px;
+    width: 15vw;
+}
+
+.field {
+    border: 1px solid black;
+    background-color: lightskyblue;
+    margin: 3px;
+}
