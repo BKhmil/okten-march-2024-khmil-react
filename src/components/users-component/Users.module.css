@@ -1,0 +1,11 @@
+.usersWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-evenly;
+}
+
+hr {
+    height: 4px;
+    background-color: black;
+}
