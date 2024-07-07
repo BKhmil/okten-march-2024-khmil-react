@@ -2,22 +2,17 @@ import {userRegisterValidator} from "../../validators/user-register.validator";
 import {joiResolver} from "@hookform/resolvers/joi";
 
 import {useForm} from "react-hook-form";
-import {FC, useRef, useState} from "react";
+import {FC, useState} from "react";
 
+import {userService} from "../../services/user.service";
+
+import {IUserForm} from "../../models/user-form.interface";
 import {IUser} from "../../models/user.interface";
 
 import hideIcon from '../../assets/icons/hide.png';
 import showIcon from '../../assets/icons/show.png';
 
 import css from './UserRegisterForm.module.css';
-import {userService} from "../../services/user.service";
-
-interface IInputs {
-    name: string;
-    username: string;
-    password: string;
-    age: number;
-}
 
 interface IProps {
     setRegisteredUser: (user: IUser) => void;
@@ -29,21 +24,18 @@ const UserRegisterForm: FC<IProps> = ({setRegisteredUser}) => {
         handleSubmit,
         formState:{errors, isValid},
         reset
-    } = useForm<IInputs>({
+    } = useForm<IUserForm>({
         mode: 'all', resolver: joiResolver(userRegisterValidator)
     });
     const [isVisible, setIsVisible] =
         useState<boolean>(false);
-    const id = useRef<number>(1);
 
     const changeVisibility = () => {
         setIsVisible(prevState => !prevState);
     }
 
-    const submitForm = (formData: IInputs) => {
-        const user: IUser = {...formData, id: id.current}
-        userService.createUser(user).then(res => setRegisteredUser(res));
-        ++id.current;
+    const submitForm = (formData: IUserForm) => {
+        userService.createUser(formData).then(res => setRegisteredUser(res));
         reset();
     }
 
