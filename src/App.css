@@ -1,0 +1,9 @@
+hr {
+    width: 100vh;
+    transform: rotate(90deg);
+    position: absolute;
+    top: 49%;
+    left: 25%;
+    height: 5px;
+    background-color: red;
+}

@@ -1,0 +1,14 @@
+.Form {
+    width: 300px;
+}
+
+.Form input {
+    width: 90%;
+    height: 20px;
+}
+
+.Form label {
+    display: block;
+    width: 100%;
+    margin: 20px 0;
+}
