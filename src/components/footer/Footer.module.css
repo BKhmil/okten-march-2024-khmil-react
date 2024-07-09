@@ -1,0 +1,10 @@
+.Footer {
+    height: 10vh;
+    background-color: blue;
+    color: snow;
+}
+
+.Footer > div {
+    font-size: 60px;
+    text-align: center;
+}

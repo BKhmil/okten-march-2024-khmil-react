@@ -1,0 +1,12 @@
+.btn {
+    position: absolute;
+    top: 20vh;
+    left: 0;
+    cursor: pointer;
+    outline: none;
+    border: 3px solid snow;
+    background-color: transparent;
+    color: snow;
+    padding: 5px;
+    font-size: 26px;
+}

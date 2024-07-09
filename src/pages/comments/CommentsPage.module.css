@@ -1,0 +1,14 @@
+.CommentsPage {
+    min-height: 80vh;
+    background-color: darkorchid;
+    color: snow;
+    padding: 0 8vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.CommentsPage > div {
+    font-size: 32px;
+}

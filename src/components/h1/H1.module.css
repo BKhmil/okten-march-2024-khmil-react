@@ -1,0 +1,17 @@
+.main {
+    height: 10vh;
+    text-align: center;
+}
+
+.main h1 {
+    display: inline-block;
+}
+
+.main img {
+    height: 40px;
+}
+
+hr {
+    height: 5px;
+    background-color: snow;
+}
