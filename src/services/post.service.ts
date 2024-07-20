@@ -1,8 +1,9 @@
-import {IPost} from "../models/post.interface";
 import {apiService} from "./api.service";
 import {urls} from "../constants/urls";
+import {IPostsResponse} from "../models/posts-block/posts-response.interface";
 
 export const postService = {
-    getAll: (): Promise<IPost[]> => apiService.get<IPost[]>(urls.posts.getAll)
-        .then(res => res.data)
+    getAll: (skip: number, limit: number): Promise<IPostsResponse> =>
+        apiService.get(urls.posts.getAll + '?skip=' + skip + '&limit=' + limit)
+            .then(res => res.data)
 }

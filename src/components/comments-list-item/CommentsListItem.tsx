@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {IComment} from "../../models/comment.interface";
+import {IComment} from "../../models/comments-block/comment.interface";
 import css from './CommentsListItem.module.css';
 
 interface IProps {
@@ -10,8 +10,7 @@ const CommentsListItem: FC<IProps> = ({comment}) => {
     return (
         <div className={css.item}>
             <div>id: {comment.id}</div>
-            <div>name: {comment.name}</div>
-            <div>email: {comment.email}</div>
+            <div>likes: {comment.likes}</div>
             <div>body: {comment.body}</div>
         </div>
     );

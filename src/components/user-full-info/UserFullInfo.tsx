@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useAppLocation} from "../../hooks/useAppLocation";
-import {IUser} from "../../models/user.interface";
+import {IUser} from "../../models/users-block/user.interface";
 import BackToPrev from "../back-to-prev/BackToPrev";
 import {userService} from "../../services/user.service";
 import {useParams} from "react-router-dom";
@@ -26,11 +26,11 @@ const UserFullInfo = () => {
                 user ?
                     <div>
                         <div>id: {user.id}</div>
-                        <div>name: {user.name}</div>
-                        <div>username: {user.username}</div>
+                        <div>lastName: {user.lastName}</div>
+                        <div>firstName: {user.firstName}</div>
+                        <div>maidenName: {user.maidenName}</div>
                         <div>email: {user.email}</div>
                         <div>phone: {user.phone}</div>
-                        <div>website: {user.website}</div>
                     </div>
                     :
                     <div>Oops...</div>

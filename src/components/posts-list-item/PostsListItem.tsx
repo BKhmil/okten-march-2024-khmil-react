@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {IPost} from "../../models/post.interface";
+import {IPost} from "../../models/posts-block/post.interface";
 import css from './PostListItem.module.css';
 
 interface IProps {

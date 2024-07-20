@@ -7,8 +7,6 @@ import PostsPage from "../pages/posts/PostsPage";
 import CommentsPage from "../pages/comments/CommentsPage";
 import UsersList from "../components/users-list/UsersList";
 import UserFullInfo from "../components/user-full-info/UserFullInfo";
-import PostsList from "../components/posts-list/PostsList";
-import CommentsList from "../components/comments-list/CommentsList";
 
 export const router = createBrowserRouter([
     {

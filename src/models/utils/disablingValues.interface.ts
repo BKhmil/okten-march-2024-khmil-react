@@ -1,0 +1,1 @@
+export interface IDisablingValues {total: number, skip: number, limit: number}
