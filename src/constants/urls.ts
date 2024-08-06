@@ -4,7 +4,8 @@ const urls = {
     users: {
         // я тут подумав навіщо я називав в подібних ситуаціях getAll, якщо це не метод
         // методи гетами треба називати
-        all: '/users'
+        all: '/users',
+        getUserById: (id: number) => urls.users.all + '/' + id
     },
     posts: {
         all: '/posts'

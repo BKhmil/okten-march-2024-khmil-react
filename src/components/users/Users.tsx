@@ -15,7 +15,8 @@ const Users = () => {
         dispatch(usersSliceActions.getAllUsers());
     }, []);
 
-    const usersElements = allUsers.map(user => <User key={user.id} user={user} />);
+    const usersElements = allUsers.map(user =>
+        <User key={user.id} user={user} withButton={true} />);
 
     return (
         <div>

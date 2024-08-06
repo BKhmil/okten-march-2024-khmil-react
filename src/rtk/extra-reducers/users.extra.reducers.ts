@@ -3,7 +3,7 @@ import {IUser} from "../../models/user.interface";
 import {usersService} from "../../services/users.service";
 import {AxiosError} from "axios";
 
-const getAllUsers = createAsyncThunk<IUser[], void, {}>(
+const getAllUsers = createAsyncThunk<IUser[], void>(
     'usersSlice/getAllUsers',
     async (_, {fulfillWithValue, rejectWithValue}) => {
         try {
@@ -16,6 +16,20 @@ const getAllUsers = createAsyncThunk<IUser[], void, {}>(
     }
 );
 
+const getUserById = createAsyncThunk<IUser | null, number>(
+    'usersSlice/getUserById',
+    async (id, {fulfillWithValue, rejectWithValue}) => {
+        try {
+            const user = await usersService.getUserById(id);
+
+            return fulfillWithValue(user);
+        } catch (e) {
+            return rejectWithValue(e as AxiosError);
+        }
+    }
+);
+
 export const usersExtraReducers = {
-    getAllUsers
+    getAllUsers,
+    getUserById
 }

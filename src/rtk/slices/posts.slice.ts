@@ -1,16 +1,18 @@
 import {AxiosError} from "axios";
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {IPost} from "../../models/post.interface";
 import {postsExtraReducers} from "../extra-reducers/posts.extra.reducers";
 
 type TPostsSlice = {
-    allPosts: IPost[],
-    isLoaded: boolean,
-    error: AxiosError
+    allPosts: Map<number, IPost>;
+    favouritePost: IPost | undefined;
+    isLoaded: boolean;
+    error: AxiosError;
 }
 
 const initialState: TPostsSlice = {
-    allPosts: [],
+    allPosts: new Map(),
+    favouritePost: undefined,
     isLoaded: false,
     error: {} as AxiosError
 };
@@ -18,13 +20,20 @@ const initialState: TPostsSlice = {
 const postsSlice = createSlice({
     name: 'postsSliceName',
     initialState,
-    reducers: {},
+    reducers: {
+        setFavouritePost(state, action: PayloadAction<number>) {
+            state.favouritePost = state.allPosts.get(action.payload);
+        }
+    },
     extraReducers: builder =>
         builder
             .addCase(postsExtraReducers.getAllPosts.fulfilled,
                 (state, action) => {
+                    const postsMap = new Map();
+                    action.payload.forEach(post => postsMap.set(post.id, post));
+
                     state.error = {} as AxiosError;
-                    state.allPosts = action.payload;
+                    state.allPosts = postsMap;
                     state.isLoaded = true;
                 })
             .addCase(postsExtraReducers.getAllPosts.rejected,
@@ -34,7 +43,10 @@ const postsSlice = createSlice({
                 })
 });
 
-const postsSliceActions = {...postsExtraReducers};
+const postsSliceActions = {
+    ...postsExtraReducers,
+    ...postsSlice.actions
+};
 
 export {
     postsSlice,
